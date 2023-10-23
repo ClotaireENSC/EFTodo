@@ -1,13 +1,13 @@
-﻿// Todo todo1 = new Todo(4, "Wash the dishes", true);
-// Todo todo2 = new Todo(5, "Clean the house", false);
-// Todo todo3 = new Todo(6, "Mow the lawn", false);
+﻿Todo todo1 = new Todo(4, "Wash the dishes", true);
+Todo todo2 = new Todo(5, "Clean the house", false);
+Todo todo3 = new Todo(6, "Mow the lawn", false);
 
 TodoContext context = new TodoContext();
 
-// context.Todo.Add(todo1);
-// context.Todo.Add(todo2);
-// context.Todo.Add(todo3);
-// context.SaveChanges();
+context.Todo.Add(todo1);
+context.Todo.Add(todo2);
+context.Todo.Add(todo3);
+context.SaveChanges();
 
 Console.WriteLine("==== Tous les Todos ====");
 foreach (var todo in context.Todo)
@@ -28,8 +28,16 @@ foreach (var todo in notCompletedTodo)
     todo.Completed = true;
 }
 
-Console.WriteLine("==== Tous les Todos ====");
+Console.WriteLine("==== Tous les Todos terminés ====");
 foreach (var todo in context.Todo)
 {
     Console.WriteLine($"Todo {todo.Id}, task: {todo.Task}, completed: {todo.Completed}");
 }
+
+Console.WriteLine("==== Suppression des Todos ====");
+
+foreach (var todo in context.Todo)
+{
+    context.Remove(todo);
+}
+context.SaveChanges();
