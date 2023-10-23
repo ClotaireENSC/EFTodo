@@ -23,3 +23,13 @@ foreach (var todo in notCompletedTodo)
         Console.WriteLine($"Todo {todo.Id}, task: {todo.Task}, completed: {todo.Completed}");
 }
 
+foreach (var todo in notCompletedTodo)
+{
+    todo.Completed = true;
+}
+
+Console.WriteLine("==== Tous les Todos ====");
+foreach (var todo in context.Todo)
+{
+    Console.WriteLine($"Todo {todo.Id}, task: {todo.Task}, completed: {todo.Completed}");
+}
